@@ -3,10 +3,12 @@ import Cards from "./Cards";
 
 export const Products = () => {
   const [Products, setProducts] = useState([]);
-  const [Cart, setCart] = useState(()=> {
-    const localData = localStorage.getItem('Products');
-    return localData ? JSON.parse(localData) : [];
-  });
+
+  // const [Cart, setCart] = useState(()=> {
+  //   const localData = localStorage.getItem('Products');
+  //   return localData ? JSON.parse(localData) : [];
+  // });
+
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -16,7 +18,8 @@ export const Products = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        // for checking  the products data
+        // console.log(data);  
         setProducts(data);
       })
       .catch((error) => {
@@ -27,17 +30,20 @@ export const Products = () => {
       });
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("Products", JSON.stringify(Cart)); // saves data in localStrage with setItem function
+  // useEffect(() => {
+  //   localStorage.setItem("Products", JSON.stringify(Cart)); // saves data in localStrage with setItem function
     
-    console.log(Cart);
-  }, [Cart]);
+  //   console.log(Cart);
+  // }, [Cart]);
 
   return (
     <div className="Products">
       {Products.map((product) => (
-        <Cards key={product.id} Product={product} setCart={setCart} Cart={Cart} />
+        <Cards key={product.id} product={product}  />
       ))}
     </div>
   );
 };
+
+// these is important , so just  remember this , we have used that before in Cards components for sending the props
+//     setCart={setCart} Cart={Cart}

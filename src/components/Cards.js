@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { Add } from "../redux/action/action";
+
 
 const Cards = (props) => {
-  const { id, category, description, image, title } = props.Product; // destructuring the props
+  const { id, category, description, image, title } = props.product; // destructuring the props
+
+  const dispatch = useDispatch();
 
   // fuction to Add products in cart 
-  const addProductToCart = () => {
-    props.setCart([...props.Cart, props.Product]); //setCart state
+  const addProductToCart = (item) => {
+        //  props.setCart([...props.Cart, props.Product]); //setCart state
+         dispatch( Add(item));
   };
 
   return (
@@ -17,7 +23,7 @@ const Cards = (props) => {
       />
       <div className="container">
         <h6>{title.substring(0, 11)}</h6>
-        <button className="card-btn" onClick={()=>addProductToCart()}>
+        <button className="card-btn" onClick={()=>addProductToCart(props.product)}>
           Add To Cart
         </button>
       </div>
