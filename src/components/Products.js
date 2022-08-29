@@ -3,13 +3,13 @@ import Cards from "./Cards";
 
 export const Products = () => {
   const [Products, setProducts] = useState([]);
-
+      // useState hook for cart
   // const [Cart, setCart] = useState(()=> {
   //   const localData = localStorage.getItem('Products');
   //   return localData ? JSON.parse(localData) : [];
   // });
 
-
+  // useEffect hook for fetching data from api only once
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => {
@@ -39,7 +39,7 @@ export const Products = () => {
   return (
     <div className="Products">
       {Products.map((product) => (
-        <Cards key={product.id} product={product}  />
+        <Cards key={product.id} product={product}  />  // cards component
       ))}
     </div>
   );
