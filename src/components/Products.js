@@ -3,7 +3,7 @@ import Cards from "./Cards";
 
 export const Products = () => {
   const [Products, setProducts] = useState([]);
-      // useState hook for cart
+  // useState hook for cart
   // const [Cart, setCart] = useState(()=> {
   //   const localData = localStorage.getItem('Products');
   //   return localData ? JSON.parse(localData) : [];
@@ -19,7 +19,7 @@ export const Products = () => {
       })
       .then((data) => {
         // for checking  the products data
-        // console.log(data);  
+        // console.log(data);
         setProducts(data);
       })
       .catch((error) => {
@@ -32,14 +32,14 @@ export const Products = () => {
 
   // useEffect(() => {
   //   localStorage.setItem("Products", JSON.stringify(Cart)); // saves data in localStrage with setItem function
-    
+
   //   console.log(Cart);
   // }, [Cart]);
 
   return (
     <div className="Products">
       {Products.map((product) => (
-        <Cards key={product.id} product={product}  />  // cards component
+        <Cards key={product.id} product={product} /> // cards component
       ))}
     </div>
   );
